@@ -34,3 +34,12 @@
     top: -500px;
     animation: block 2s infinite linear;
 }
+
+#character {
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    position: absolute;
+    top: 100px;
+    border-radius: 50%;
+}
