@@ -9,3 +9,19 @@ hole.addEventListener('animationiteration', () => {
     hole.style.top = random + "px";
     counter++;
 });
+
+setInterval(function() {
+    const characterTop = 
+    parseInt(window.getComputedStyle(character).getPropertyValue("top"));
+    if (jumping === 0) {
+        character.style.top = (characterTop + 3)+"px";
+    }
+    const blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
+    const holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
+    const cTop = -(500 - characterTop);
+    if ((characterTop > 480) || ((blockLeft < 20) && (blockLeft > -50) && ((cTop < holeTop) || (cTop > holeTop + 130)))) {
+        alert("Game Over! Score: " + counter);
+        character.style.top = 100 + "px";
+        counter = 0;
+    }
+},10);
