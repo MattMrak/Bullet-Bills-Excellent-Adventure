@@ -32,7 +32,7 @@ function jump() {
     const jumpInterval = setInterval(function(){
         const characterTop = 
         parseInt(window.getComputedStyle(character).getPropertyValue("top"));
-        if ((characterTop > 6) && (counter < 15)) {
+        if ((characterTop > 6) && (counter < 100000)) {
             character.style.top = (characterTop - 5) + "px";
         }
         if (jumpCount > 20) {
@@ -43,3 +43,7 @@ function jump() {
         jumpCount++;
     },10);
 }
+
+// when the counter gets to 15 the character falls -
+// - to the bottom and the game ends. 
+// troubleshoot this issue!
