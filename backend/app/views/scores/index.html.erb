@@ -1,0 +1,6 @@
+<h1>Scoreboard</h1>
+<ul>
+    <% @scores.each do |s| %>
+        <li><%= link_to s.name, score_path(s) %></li>
+    <% end %>
+</ul>
