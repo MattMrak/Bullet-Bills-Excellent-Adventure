@@ -1,8 +1,8 @@
 class ScoresController < ApplicationController
     def index
         #after new score is created, display a list of all scores in descending order (highest -> lowest) and have the score that was just created highlited
-        @score = Score.all
-        render json: @score
+        @scores = Score.all
+        render json: @scores
     end
     def create
         #create & save the new score w the users name
