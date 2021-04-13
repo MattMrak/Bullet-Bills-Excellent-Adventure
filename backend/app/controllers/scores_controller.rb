@@ -1,16 +1,22 @@
 class ScoresController < ApplicationController
-    def new
-        #when game ends display a form with the users score & an empty field to insert their name w submit button
-        @score = Score.new
-    end
-    def create
-        #create & save the new score w the users name
-        @score = Score.save
-    end
     def index
         #after new score is created, display a list of all scores in descending order (highest -> lowest) and have the score that was just created highlited
         @score = Score.all
         render json: @score
+    end
+    def create
+        #create & save the new score w the users name
+        @score = Score.create(score_params)
+        render json: @score
+    end
+    def show
+        #show each individual score
+        @score = Score.find_by(params[:id])
+        render json: @score
+    end
+    private
+    def score_params
+        params.permit(:name, :amount)
     end
 end
 
