@@ -5,6 +5,7 @@ let jumping = 0;
 let counter = 0;
 
 
+
 document.addEventListener("DOMContentLoaded", () => {
     fetch("http://localhost:3000/games")
     .then(r => r.json())
@@ -16,20 +17,18 @@ document.addEventListener("DOMContentLoaded", () => {
         //4. set the pipes div to the image you want
         let character = document.getElementById("character")
         let characterImage = document.createElement("img")
+        characterImage.width = 20
+        characterImage.height = 20
         characterImage.src = object[0].image
         character.append(characterImage)
         let block = document.getElementById("block")
         let blockImage = document.createElement("img")
+        blockImage.width = 50
+        blockImage.height = 500
         blockImage.src = object[1].image
         block.append(blockImage)
     })
 })
-
-
-
-
-
-
 
 hole.addEventListener('animationiteration', () => {
     const random = -((Math.random() * 300) + 150);
@@ -75,21 +74,19 @@ function jump() {
 
 
 
-
-
 // function fetchScores() {
-//     return fetch(SCORES_URL)
+//     return fetch("http://localhost:3000/scores")
 //     .then(response => response.json())
 // };
 // document.addEventListener('DOMContentLoaded', () => {
 //     fetchScores()
 //     .then(results => console.log(results))
 // });
-// function addANewScore(event) {
-//     const scoreId = event.target.dataset.scoreId;
-//     data = { score_id: scoreId}
+// function addANewScore(amount) {
+//     const scoreId = amount.target.daaset.scoreId;
+//     data = {score_id: scoreId}
 
-//     fetch(SCORES_URL, {
+//     fetch("http://localhost:3000/scores", {
 //         method: 'POST',
 //         headers:  {
 //         "Content-Type": "application/json",
@@ -98,3 +95,4 @@ function jump() {
 //         body: JSON.stringify(data)
 //     })
 // };
+
