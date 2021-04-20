@@ -21,8 +21,11 @@ ActiveRecord::Schema.define(version: 2021_04_05_173654) do
   create_table "scores", force: :cascade do |t|
     t.string "name"
     t.string "amount"
+    t.integer "game_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_scores_on_game_id"
   end
 
+  add_foreign_key "scores", "games"
 end

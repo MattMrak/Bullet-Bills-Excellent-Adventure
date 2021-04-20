@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("http://localhost:3000/games")
     .then(r => r.json())
     .then((object) => {
-        console.log(object)
+        // console.log(object)
         // 1. select the character div 
         // 2. set the character div to equal the image that you want
         // 3. select the pipes div
@@ -46,9 +46,9 @@ setInterval(function() {
     const holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
     const cTop = -(500 - characterTop);
     if ((characterTop > 480) || ((blockLeft < 20) && (blockLeft > -50) && ((cTop < holeTop) || (cTop > holeTop + 130)))) {
-        // alert("Game Over! Score: " + counter);
+        addNewScore()
         character.style.top = 100 + "px";
-        counter = 0;
+        // counter = 0;
     }
 },10);
 
@@ -70,29 +70,53 @@ function jump() {
     },10);
 }
 
+// create a new function addNewScore with event "submit" that will submit the new score to the backend using a "POST" fetch
+// get the info you need to send to backend using evt.target (evt can be whatever you choose to name the event in ur function)
 
-
-
+function addNewScore() {
+    document.getElementById("game").innerHTML=""
+    let score = document.getElementById("newScoreContainer")
+    game.append(score)
+    let form = document.getElementById("newScoreForm");
+    form.addEventListener("submit", (event) => {
+        event.preventDefault()
+        let player = event.target.name.value
+        fetch("http://localhost:3000/scores", {
+            method: 'POST',
+            headers:  {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+            name: player,
+            amount: `${counter}`,
+            game_id: 1
+        })
+        })
+    })
+    fetchScores()
+}
 
 // function fetchScores() {
-//     return fetch("http://localhost:3000/scores")
+//     // create in CSS and style it
+//     let scoreBoard = document.createElement("div")
+//     scoreBoard.className = "scores"
+//     game.append(scoreBoard)
+//     fetch("http://localhost:3000/scores")
 //     .then(response => response.json())
-// };
-// document.addEventListener('DOMContentLoaded', () => {
-//     fetchScores()
-//     .then(results => console.log(results))
-// });
-// function addANewScore(amount) {
-//     const scoreId = amount.target.daaset.scoreId;
-//     data = {score_id: scoreId}
-
-//     fetch("http://localhost:3000/scores", {
-//         method: 'POST',
-//         headers:  {
-//         "Content-Type": "application/json",
-//         "Accept": "application/json"
-//         },
-//         body: JSON.stringify(data)
+//     .then((response) => {
+//         response.forEach((score) => {
+//             console.log(score)
+//             scoreBoard.innerHTML=score
+//         })
 //     })
 // };
 
+
+// let startGame = document.getElementById("startGame")
+// startGame.onclick = function() {
+//     game.append(startGame)
+// }
+
+// create function to display all scores &
+// include new game button to start game again.

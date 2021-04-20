@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;
+    text-align: center;
 }
 
 #game {
@@ -42,4 +43,12 @@
     position: absolute;
     top: 100px;
     border-radius: 50%;
+}
+
+.scores {
+    border: 1px solid black;
+    background-color: white;
+    width: 200px;
+    padding: 50px;
+    margin: 10px;
 }
