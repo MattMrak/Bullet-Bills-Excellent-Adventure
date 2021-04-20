@@ -97,20 +97,20 @@ function addNewScore() {
     fetchScores()
 }
 
-// function fetchScores() {
-//     // create in CSS and style it
-//     let scoreBoard = document.createElement("div")
-//     scoreBoard.className = "scores"
-//     game.append(scoreBoard)
-//     fetch("http://localhost:3000/scores")
-//     .then(response => response.json())
-//     .then((response) => {
-//         response.forEach((score) => {
-//             console.log(score)
-//             scoreBoard.innerHTML=score
-//         })
-//     })
-// };
+function fetchScores() {
+    // create in CSS and style it
+    let scoreBoard = document.createElement("div")
+    scoreBoard.className = "scores"
+    game.append(scoreBoard)
+    fetch("http://localhost:3000/scores")
+    .then(response => response.json())
+    .then((response) => {
+        response.forEach((score) => {
+            console.log(score)
+            scoreBoard.innerHTML=score
+        })
+    })
+};
 
 
 // let startGame = document.getElementById("startGame")
