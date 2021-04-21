@@ -50,5 +50,6 @@
     background-color: white;
     width: 200px;
     padding: 50px;
-    margin: 10px;
+    /* margin: 10px; */
+    margin: auto;
 }

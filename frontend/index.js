@@ -74,7 +74,10 @@ function jump() {
 // get the info you need to send to backend using evt.target (evt can be whatever you choose to name the event in ur function)
 
 function addNewScore() {
-    document.getElementById("game").innerHTML=""
+    let scoreBoard = document.createElement("div")
+    scoreBoard.className = "scores"
+    scoreBoard.innerHTML = `<h2>Score Board</h2><br>`
+    document.getElementById("game").innerHTML = ""
     let score = document.getElementById("newScoreContainer")
     game.append(score)
     let form = document.getElementById("newScoreForm");
@@ -93,24 +96,35 @@ function addNewScore() {
             game_id: 1
         })
         })
+        .then(response => response.json())
+        .then((newScore) => {
+            let newlyCreated = document.createElement("ol")
+            newlyCreated.innerHTML = `Name: ${newScore.name} | Score: ${newScore.amount}`
+            scoreBoard.append(newlyCreated)
+            event.target.reset()
+        })
+        fetchScores()
     })
-    fetchScores()
+    function fetchScores() {
+        // create in CSS and style it
+        game.append(scoreBoard)
+        fetch("http://localhost:3000/scores")
+        .then(response => response.json())
+        .then((scoreArray) => {
+            scoreArray.forEach((score) => {
+                takeOneScoreAndTurnItIntoOl(score)
+            })
+        })
+        function takeOneScoreAndTurnItIntoOl(scoreObj) {
+            let scoreOl = document.createElement("ol")
+            scoreOl.className = "item"
+            scoreOl.innerHTML = `Name: ${scoreObj.name} | Score: ${scoreObj.amount}`
+            scoreBoard.append(scoreOl)
+        }
+    };
 }
 
-function fetchScores() {
-    // create in CSS and style it
-    let scoreBoard = document.createElement("div")
-    scoreBoard.className = "scores"
-    game.append(scoreBoard)
-    fetch("http://localhost:3000/scores")
-    .then(response => response.json())
-    .then((response) => {
-        response.forEach((score) => {
-            console.log(score)
-            scoreBoard.innerHTML=score
-        })
-    })
-};
+
 
 
 // let startGame = document.getElementById("startGame")
@@ -120,3 +134,119 @@ function fetchScores() {
 
 // create function to display all scores &
 // include new game button to start game again.
+
+// function addNewScore(){
+   
+//     boardDiv.innerHTML="";
+//     document.querySelector("body").style.backgroundImage="url(https://nsmbhd.net/file/3372/NSMBW%20Background%20Thing.png)"
+//     let allScores = document.getElementById("scores")
+
+//     let lbContainer = document.querySelector(".lb_container")
+
+//     let scoreContainer = document.querySelector(".scores_container")
+//     let addScoreForm = document.querySelector(".add_form")
+//         addScoreForm.className="form"
+    
+//     scoreContainer.append(addScoreForm)
+//     boardDiv.append(scoreContainer)
+//     viewAllScores()
+    
+
+    
+//     addScoreForm.addEventListener("submit", (evt) => {
+//         evt.preventDefault()
+        
+//         let timeStopped = counter.innerText
+//         let name = evt.target.name.value
+//         let number = (200 - parseInt(timeStopped))
+//         let level = 1
+        
+        
+        
+//         fetch("http://localhost:3000/scores", {
+//             headers: {
+//                 "Content-Type": "application/json",
+//                 "Accept": "application/json"
+//             },
+//             method: "POST",
+//             body: JSON.stringify({
+//                 name: name,
+//                 number: number,
+//                 Level_id: level
+//             })
+//         })
+//         .then(r => r.json())
+//             .then((newScore) => {
+//                 let newlyCreated = document.createElement("li")
+//                 newlyCreated.innerHTML = `Name: ${newScore.name} Score: ${newScore.number}`
+//                 newlyCreated.className="scores"
+//                 allScoresDiv.append(newlyCreated)
+//                 evt.target.reset()
+//             }) 
+//         })
+        
+        
+//     let allScoresDiv = document.createElement("div")
+//     allScoresDiv.className="scoreboard"
+//     allScoresDiv.innerText="High Scores"
+    
+    
+//     function viewAllScores() {
+//         adaptor.getAllScores()
+//         .then((scores) => {
+//             scores.forEach((score) => {
+//                 let eachScore = document.createElement("li")
+//                 eachScore.className="scores"
+//             eachScore.innerText= `Name: ${score.name} Score: ${score.number}`
+//             allScoresDiv.append(eachScore)
+//             lbContainer.append(allScoresDiv)
+//             boardDiv.append(lbContainer)
+
+
+//             let newButton = document.createElement("button")
+//                 newButton.innerText="80s-afy"
+//                 newButton.className="delete_button"
+
+//                 eachScore.append(newButton)
+
+//                 newButton.addEventListener("click", (event) => {
+//                     let newName = (`${score.name.slice(0,3).toUpperCase()}`)
+                    
+
+//                     eachScore.innerText = score.name = newName
+
+//                 fetch(`http://localhost:3000/scores/${score.id}`, {
+//                   method: "PATCH",
+//                   headers: {
+//                     'Content-Type': 'application/json'
+//                   },
+//                   body: JSON.stringify({
+//                      name: newName
+//                   })
+//                 })
+//                 }) 
+
+                
+
+
+//             let deleteButton = document.createElement("button")
+//                 deleteButton.innerText = "Delete"
+//                 deleteButton.className = "delete_button"
+//             eachScore.append(deleteButton)
+//             deleteButton.addEventListener("click", (event) => {
+//                 fetch(`http://localhost:3000/scores/${score.id}`, {
+//                   method: "DELETE"
+//                 })
+//                 .then(r => r.json())
+//                 .then((res) => {
+//                   eachScore.remove()
+//                 })
+//             })
+    
+//             })
+             
+//         })
+//     }
+    
+
+// }
