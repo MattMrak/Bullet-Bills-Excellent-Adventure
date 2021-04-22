@@ -79,6 +79,7 @@ function addNewScore() {
     scoreBoard.innerHTML = `<h2>Score Board</h2>`
     document.getElementById("game").innerHTML = ""
     let score = document.getElementById("newScoreContainer")
+    score.style.display="block"
     game.append(score)
     form = document.getElementById("newScoreForm");
     form.addEventListener("submit", (event) => {

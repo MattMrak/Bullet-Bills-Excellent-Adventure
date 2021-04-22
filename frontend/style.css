@@ -53,14 +53,12 @@
     margin: auto;
 }
 
+/* hides start game button until appended on game div */
+#startGameButton {
+    display: none;
+}
 
 /* hide newScoreForm then onclick show the form */
-
-
-/* #newScoreContainer {
-    display: none;
-} */
-
-#startGameButton {
+#newScoreContainer {
     display: none;
 }
