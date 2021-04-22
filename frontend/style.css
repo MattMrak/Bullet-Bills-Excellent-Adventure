@@ -50,6 +50,17 @@
     background-color: white;
     width: 200px;
     padding: 50px;
-    /* margin: 10px; */
     margin: auto;
+}
+
+
+/* hide newScoreForm then onclick show the form */
+
+
+/* #newScoreContainer {
+    display: none;
+} */
+
+#startGameButton {
+    display: none;
 }

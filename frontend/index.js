@@ -76,11 +76,11 @@ function jump() {
 function addNewScore() {
     let scoreBoard = document.createElement("div")
     scoreBoard.className = "scores"
-    scoreBoard.innerHTML = `<h2>Score Board</h2><br>`
+    scoreBoard.innerHTML = `<h2>Score Board</h2>`
     document.getElementById("game").innerHTML = ""
     let score = document.getElementById("newScoreContainer")
     game.append(score)
-    let form = document.getElementById("newScoreForm");
+    form = document.getElementById("newScoreForm");
     form.addEventListener("submit", (event) => {
         event.preventDefault()
         let player = event.target.name.value
@@ -99,14 +99,13 @@ function addNewScore() {
         .then(response => response.json())
         .then((newScore) => {
             let newlyCreated = document.createElement("ol")
-            newlyCreated.innerHTML = `Name: ${newScore.name} | Score: ${newScore.amount}`
+            newlyCreated.innerHTML = `<br><h3>Your Score</h3> Name: ${newScore.name} | Score: ${newScore.amount}`
             scoreBoard.append(newlyCreated)
             event.target.reset()
         })
         fetchScores()
     })
     function fetchScores() {
-        // create in CSS and style it
         game.append(scoreBoard)
         fetch("http://localhost:3000/scores")
         .then(response => response.json())
@@ -131,3 +130,4 @@ function addNewScore() {
         }
     };
 }
+
