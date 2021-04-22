@@ -2,7 +2,7 @@ class ScoresController < ApplicationController
 
     def index
         #after new score is created, display a list of all scores in descending order (highest -> lowest) and have the score that was just created highlited
-        @scores = Score.order(amount: :desc)
+        @scores = Score.order(amount: :desc).slice(0,10)
         render json: @scores
         #scope score amounts in order from highest to lowest
     end
