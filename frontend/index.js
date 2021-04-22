@@ -121,9 +121,13 @@ function addNewScore() {
             scoreOl.innerHTML = `Name: ${scoreObj.name} | Score: ${scoreObj.amount}`
             scoreBoard.append(scoreOl)
         }
+        let startGame = document.getElementById("startGame")
+        game.append(startGame)
+        startGame.onclick = function() {
+            restart()
+        }
+        function restart() {
+            document.location.href=""
+        }
     };
 }
-
-
-
-
