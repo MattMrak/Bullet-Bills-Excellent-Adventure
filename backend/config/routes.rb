@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :games
   resources :scores
 
+  get '/scores/high_score' => 'scores#high_score'
+
   # post "/scores", to: "score#create"
   # post "/scores", to: "score#new"
 
