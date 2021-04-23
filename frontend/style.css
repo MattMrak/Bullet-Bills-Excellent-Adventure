@@ -2,14 +2,17 @@
     padding: 0;
     margin: 0;
     text-align: center;
+    font-family: 'New Super Mario Font U', sans-serif;                                              
 }
 
 #game {
     width: 400px;
     height: 500px;
-    border: 1px solid black;
+    border: 3px solid black;
     margin: auto;
     overflow: hidden;
+    background-image: url("https://cdn.hipwallpaper.com/i/12/67/i8qpbM.png");
+    background-size: cover;
 }
 
 #block {
@@ -29,7 +32,7 @@
 #hole {
     width: 50px;
     height: 150px;
-    background-color: #00BFFF;
+    background-color: lightsteelblue;
     position: relative;
     left: 400px;
     top: -500px;
@@ -61,4 +64,9 @@
 /* hide newScoreForm then onclick show the form */
 #newScoreContainer {
     display: none;
+}
+
+body {
+    background-image: url("https://pixelz.cc/wp-content/uploads/edd/2018/06/super-mario-world-map-uhd-4k-wallpaper-768x432.jpg");
+    background-size: cover;
 }
