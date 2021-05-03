@@ -18,7 +18,7 @@
             <form id="newScoreForm">
                 <h1>New Score</h1>
                 <label for="name">Name</label>
-                <input type="text" name="name" value="" placeholder="Enter Name">
+                <input type="text" name="name" value="" placeholder="Enter Name" maxlength="7" required>
                 <input type="submit" name="submit" value="Submit">
             </form>
             <br>
@@ -26,7 +26,8 @@
         <div id="startGameButton">
             <input type="button" id="startGame" name="startGame" value="Start Game">
         </div>
-        <script src="index.js"></script>
+        <script src="src/components/scores.js"></script>
+        <script src="src/index.js"></script>
         <h1>Bullet Bill's Excellent Adventure</h1>
     </body>
 </html>
