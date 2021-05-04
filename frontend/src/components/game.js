@@ -44,7 +44,7 @@ function jump() {
         }
         if (jumpCount > 20) {
             clearInterval(jumpInterval);
-            jumping = 8;
+            jumping = 0;
             jumpCount = 0;
         }
         jumpCount++;
